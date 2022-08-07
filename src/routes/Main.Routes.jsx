@@ -7,7 +7,7 @@ import SignUp from "../views/Auth/SignUp";
 import NotFound from "../views/NotFound";
 import {useNavigate} from "react-router-dom";
 import Mails from "../views/Mails";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {isAuthService} from "../services/auth/isAuth.service";
 import {isAuth, signedError} from "../store/SLice/signInSlice";
 import Loader from "../components/Loader";

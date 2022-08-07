@@ -3,7 +3,7 @@ import React from 'react';
 const MainPage = () => {
     return (
         <>
-            Main
+            <span className="font-monospace">Main</span>
         </>
     );
 };

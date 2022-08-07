@@ -8,23 +8,20 @@ import {
     Navbar,
 } from "react-bootstrap";
 import {CgMenu} from "react-icons/cg";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {BsSearch} from "react-icons/bs";
 import {BiUserCircle} from "react-icons/bi";
 import {MdNotificationsActive} from "react-icons/md";
 import Navigation from "./SideMenu";
 import {useSelector} from "react-redux";
-import {API_APP} from "../../helper/CONSTANTS";
+import {getFileFromServer} from "../../utils/getFileFromServer";
+import './style.css'
 
 const Index = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const selector = useSelector(state => state.signIn)
-    const getImg = (filePath) => {
-        return `http://agency.test/avatars/${filePath}`
-    }
-
     return (
         <>
             <Navbar
@@ -70,24 +67,44 @@ const Index = () => {
                         <span className={"me-1 fs-4"}>
                           <MdNotificationsActive/>
                         </span>
-                        <Dropdown role={"menu"}>
+                        <Dropdown role={"menubar"} >
                             <Dropdown.Toggle
                                 as={"span"}
                                 className="profile-dropdown fs-4"
                                 id="dropdown-basic"
                             >
                                 {
-                                    selector?.user?.avatar
+                                    selector.user.avatar
                                         ?
-                                        <Image src={getImg(selector.user.avatar)} width={24}/>
+                                        <Image src={getFileFromServer(`avatars/${selector.user.avatar}`)} width={24}
+                                               roundedCircle/>
                                         :
                                         <BiUserCircle/>
                                 }
                             </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            <Dropdown.Menu className="p-2">
+                                <Dropdown.Item
+                                    as={NavLink} to="/profile"
+                                    className="px-2 py-1 hover-btn"
+                                >
+                                    @{selector.user.name}
+                                </Dropdown.Item>
+                                <hr/>
+                                <Dropdown.Item
+                                    className="px-2 py-1 fz-1"
+                                >
+                                    Звание: {selector.user.rank}
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    className="px-2 py-1 hover-btn fz-1"
+                                >
+                                    Позиция: {selector.user.position}
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    className="px-2 py-1 hover-btn"
+                                >Департамент: {selector.user.department}
+                                </Dropdown.Item>
+                                <Dropdown.Item className="px-2 py-1 hover-btn">Регион: {selector.user.region}</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
