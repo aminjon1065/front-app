@@ -1,0 +1,81 @@
+@import "./../assets/fonts/Inter/inter.css";
+@import "customBootstrap";
+
+body {
+  font-family: "Inter";
+}
+
+
+a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn.active {
+  background-color: #dee8f0;
+  text-decoration: underline;
+  color: #07638b;
+  border: none;
+}
+
+.btn{
+  --bs-btn-border-width: 0;
+}
+
+a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn:hover{
+  border: none;
+}
+
+a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn.hover-btn:hover {
+  background-color: #dee8f0;
+  text-decoration: underline;
+  color: black;
+  border: none;
+}
+
+.search-btn {
+  position: absolute;
+  right: 2.3rem;
+  z-index: 9999 !important;
+}
+
+
+.search-input:hover {
+  z-index: 1;
+}
+
+.search-container {
+  width: 40%;
+}
+
+
+@media screen and (max-width: 575px) {
+  .search-container {
+    width: 55%;
+    margin: auto;
+  }
+}
+
+.profile-dropdown::after {
+  display: none;
+}
+
+.dropdown-menu {
+  left: inherit !important;
+  right: 0;
+}
+
+.z-index-999 {
+  z-index: 1 !important;
+}
+
+//.sign-in-container{
+//  width: 50em;
+//}
+
+
+.navbar-toggler-icon {
+}
+
+
+@media screen and (max-width: 353px) {
+  .search-container {
+    display: none;
+    margin: auto;
+  }
+}

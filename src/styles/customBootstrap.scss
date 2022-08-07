@@ -1,0 +1,45 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/maps";
+
+$my-theme-colors: (
+        'primary':$primary,
+        "secondary":$secondary,
+        "warning":$warning,
+        "danger":$danger,
+        "info":$info,
+        "success":$success,
+        "light":$light,
+        "dark":$dark,
+        "purple":$purple,
+        "bolota":#264653,
+        "apple-red":#ff313b,
+        "apple-green": #34c759,
+        "apple-orange":#ff9500,
+        "apple-yellow": #ffcc00,
+        "apple-mint": #00c7be,
+        "apple-teal":#30b0c7,
+        "apple-cyan":#32ade6,
+        "apple-blue":#007aff,
+        "apple-indigo":#5856d6,
+        "apple-purple":#af52de,
+        "apple-pink":#ff2d55,
+        "apple-brown":#a2845e,
+        "apple-milk":#f5f5f7,
+        "soft-grey":#c2c2c2,
+        "darkest-grey":#2f2f2f,
+        "classic-blue":#34568B,
+        "hover-links":rgb(181, 194, 215),
+        "bg":#f9f9f9,
+        "white":#ffffff,
+        'gray-bg':#F2F2F2,
+        'gray-card':#D6D6D6
+);
+$theme-colors: map-merge($theme-colors, $my-theme-colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: map-merge($utilities-colors, $my-theme-colors);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+//$input-focus-box-shadow: 1px 2px 5px 1px rgba(38, 70, 83, 0.3);
+@import "bootstrap/scss/bootstrap";
