@@ -67,7 +67,7 @@ const Index = () => {
                         <span className={"me-1 fs-4"}>
                           <MdNotificationsActive/>
                         </span>
-                        <Dropdown role={"menubar"} >
+                        <Dropdown role={"menubar"}>
                             <Dropdown.Toggle
                                 as={"span"}
                                 className="profile-dropdown fs-4"
@@ -101,10 +101,11 @@ const Index = () => {
                                     Позиция: {selector.user.position}
                                 </Dropdown.Item>
                                 <Dropdown.Item
-                                    className="px-2 py-1 hover-btn"
+                                    className="px-2 py-1 hover-btn fz-1"
                                 >Департамент: {selector.user.department}
                                 </Dropdown.Item>
-                                <Dropdown.Item className="px-2 py-1 hover-btn">Регион: {selector.user.region}</Dropdown.Item>
+                                <Dropdown.Item
+                                    className="px-2 py-1 hover-btn fz-1">Регион: {selector.user.region}</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
