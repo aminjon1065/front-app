@@ -38,7 +38,7 @@ const MainRoutes = () => {
             navigate("/sign-in")
             setLoader(false)
         }
-    }, [token])
+    }, [token,dispatch])
     return (
         <>
             {
