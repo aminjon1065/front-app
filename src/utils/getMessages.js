@@ -1,14 +1,16 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 import {API_APP} from "../helper/CONSTANTS";
 
-const token = localStorage.getItem("JWT_token")
 export const messagesApi = createApi({
     reducerPath: "messagesApi",
+    
     baseQuery: fetchBaseQuery({
         baseUrl: API_APP, prepareHeaders: (headers) => {
-            if (token){
+const token = localStorage.getItem("JWT_token")
+
+            // if (token){
                 headers.set('authorization', `Bearer ${token}`)
-            }
+            // }
          return headers
         }
     }),

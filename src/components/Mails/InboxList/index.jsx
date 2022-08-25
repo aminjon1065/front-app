@@ -12,7 +12,7 @@ const Index = () => {
                     data.data.length ? data.data.map((msg) => (
                         <li key={msg.id}>
                             {
-                                msg.text
+                                msg.title
                             }
                         </li>
                     )) : "Not found"
