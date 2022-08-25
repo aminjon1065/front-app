@@ -4,10 +4,17 @@ import {API_APP} from "../helper/CONSTANTS";
 const token = localStorage.getItem("JWT_token")
 export const messagesApi = createApi({
     reducerPath: "messagesApi",
-    baseQuery: fetchBaseQuery({baseUrl: API_APP, headers: {"Authorization": `Bearer ${token}`}}),
-    endpoints:(build) =>({
-        getMessages:build.query({
-            query:()=>`inbox`,
+    baseQuery: fetchBaseQuery({
+        baseUrl: API_APP, prepareHeaders: (headers) => {
+            if (token){
+                headers.set('authorization', `Bearer ${token}`)
+            }
+         return headers
+        }
+    }),
+    endpoints: (build) => ({
+        getMessages: build.query({
+            query: () => `inbox`,
         })
     })
 });
