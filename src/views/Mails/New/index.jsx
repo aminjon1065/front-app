@@ -22,7 +22,7 @@ const Index = () => {
                         </FormLabel>
                     </Col>
                     <Col xs={9} sm={9} md={10} xxl={10} xl={10}>
-                        <FormControl className="shadow-none border-danger-pallet" value={to} onChange={changeTo}/>
+                        <FormControl className="shadow-none border-danger-pallet" value={to.map(el=>el)} onChange={changeTo}/>
                         {/*<Select onMenuClose={} onChange={} onMenuOpen={} inputValue={} value={} onInputChange={} />*/}
                         <Select options={options} isMulti onChange={(choice)=>setTo(choice)}/>
                     </Col>
