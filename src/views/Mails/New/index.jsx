@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import {Col, Container, FormControl, FormLabel, Row} from "react-bootstrap";
-
+import Select from "react-select";
 const Index = () => {
     const [to, setTo] = useState([])
-    const changeTo = (event) => {
-        event.target.value.map((el) => {
-            setTo(el)
-        })
+    const changeTo = () => {
+        console.log('test')
     }
-
+    console.log(to)
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+    ]
     return (
         <>
             <Container>
@@ -20,6 +23,8 @@ const Index = () => {
                     </Col>
                     <Col xs={9} sm={9} md={10} xxl={10} xl={10}>
                         <FormControl className="shadow-none border-danger-pallet" value={to} onChange={changeTo}/>
+                        {/*<Select onMenuClose={} onChange={} onMenuOpen={} inputValue={} value={} onInputChange={} />*/}
+                        <Select options={options} isMulti onChange={(choice)=>setTo(choice)}/>
                     </Col>
                 </Row>
             </Container>
