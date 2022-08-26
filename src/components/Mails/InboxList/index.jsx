@@ -15,7 +15,7 @@ const Index = () => {
                                 msg.title
                             }
                         </li>
-                    )) : "Not found"
+                    )) : <h3>Пусто</h3>
                 }
             </ul>
 

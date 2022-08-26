@@ -34,7 +34,13 @@ $my-theme-colors: (
         "bg":#f9f9f9,
         "white":#ffffff,
         'gray-bg':#F2F2F2,
-        'gray-card':#D6D6D6
+        'gray-card':#D6D6D6,
+        'prime-pallet':#26547C,
+        'danger-pallet':#EF476F,
+        'warning-pallet':#FFD166,
+        'success-pallet':#06D6A0,
+        'white-pallet':#FFFCF9,
+        'secondary-pallet':#E9E9EB
 );
 $theme-colors: map-merge($theme-colors, $my-theme-colors);
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");

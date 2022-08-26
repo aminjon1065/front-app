@@ -11,7 +11,7 @@ import Draft from "../views/Mails/Draft";
 const MailRoutes = () => {
     return (
         <>
-            <Container fluid className="bg-white rounded shadow-sm">
+            <Container fluid className="bg-white-pallet rounded shadow-sm h-100">
                 <Routes>
                     <Route path={"/inbox"} element={<Inbox/>}/>
                     <Route path={"/new"} element={<New/>}/>

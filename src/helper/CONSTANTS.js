@@ -1,1 +1,1 @@
-export const API_APP = "http://agency.test/api"
+export const API_APP = "http://agency.test/api/v1"
