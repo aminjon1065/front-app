@@ -11,6 +11,7 @@ const Index = () => {
     return (
         <>
             <Container>
+                <h5 className="text-slate">Новое сообщение</h5>
                 <Row>
                     <Col xs={3} sm={3} md={2} xl={2} xxl={2}>
                         <FormLabel className="fs-6">

@@ -40,7 +40,8 @@ $my-theme-colors: (
         'warning-pallet':#FFD166,
         'success-pallet':#06D6A0,
         'white-pallet':#FFFCF9,
-        'secondary-pallet':#E9E9EB
+        'secondary-pallet':#E9E9EB,
+        'slate':#708090
 );
 $theme-colors: map-merge($theme-colors, $my-theme-colors);
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
