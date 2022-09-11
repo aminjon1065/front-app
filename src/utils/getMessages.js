@@ -3,15 +3,12 @@ import {API_APP} from "../helper/CONSTANTS";
 
 export const messagesApi = createApi({
     reducerPath: "messagesApi",
-    
     baseQuery: fetchBaseQuery({
-        baseUrl: API_APP, prepareHeaders: (headers) => {
-const token = localStorage.getItem("JWT_token")
-
-            // if (token){
-                headers.set('authorization', `Bearer ${token}`)
-            // }
-         return headers
+        baseUrl: API_APP,
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem("JWT_token")
+            headers.set('authorization', `Bearer ${token}`)
+            return headers
         }
     }),
     endpoints: (build) => ({

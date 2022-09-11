@@ -3,8 +3,8 @@ import {useGetMessagesQuery} from "../../../utils/getMessages";
 
 const Index = () => {
     const {data = [], isLoading, error} = useGetMessagesQuery();
-    if (isLoading) return <h1>Loading...</h1>
-    if (error) return <h1 className="text-light bg-danger">Error</h1>
+    if (isLoading) return <h1>Загрузка...</h1>
+    if (error) return <h1 className="text-light bg-danger">Ошибка</h1>
     return (
         <>
             <ul>
