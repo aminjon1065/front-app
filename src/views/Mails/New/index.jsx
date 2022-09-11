@@ -6,9 +6,13 @@ import {useGetAllUsersQuery} from "../../../utils/getUsersList";
 const Index = () => {
     const [to, setTo] = useState([])
     const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
     const {data = [], isLoading, error} = useGetAllUsersQuery();
     const onChangeTitle = (e) => {
         setTitle(e.target.value)
+    }
+    const onChangeText = (e) => {
+        setText(e.target.value)
     }
     if (error) return <h1 className="text-danger">Загрузка...</h1>
     return (
@@ -59,9 +63,9 @@ const Index = () => {
                     </Col>
                     <Col xs={9} sm={9} md={10} xxl={10} xl={10}>
                         <FormControl as={"textarea"}
-                            className="shadow-none"
-                            value={title}
-                            onChange={onChangeTitle}
+                            className="shadow-none fz-1"
+                            value={text}
+                            onChange={onChangeText}
                         />
                     </Col>
                 </Row>
