@@ -1,23 +1,26 @@
 import React, {useState} from 'react';
-import {Col, Container, FormControl, FormLabel, Row} from "react-bootstrap";
+import {Button, Col, Container, FormControl, FormLabel, Row} from "react-bootstrap";
 import Select from "react-select";
 import {useGetAllUsersQuery} from "../../../utils/getUsersList";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import Editor from "../../../components/Mails/Editor";
+
 
 const Index = () => {
     const [to, setTo] = useState([])
     const [title, setTitle] = useState('')
-    const [text, setText] = useState('')
+    const [htmlContent, setHtmlContent] = useState('')
+    const getContent = (htmlContentProp) => {
+        setHtmlContent(htmlContentProp);
+    }
     const {data = [], isLoading, error} = useGetAllUsersQuery();
     const onChangeTitle = (e) => {
         setTitle(e.target.value)
     }
-    const onChangeText = (e) => {
-        setText(e.target.value)
-    }
     if (error) return <h1 className="text-danger">Загрузка...</h1>
     return (
         <>
-            <Container>
+            <Container className="p-3">
                 <h5 className="text-slate">Новое сообщение</h5>
                 <Row>
                     <Col xs={3} sm={3} md={2} xl={2} xxl={2}>
@@ -62,13 +65,12 @@ const Index = () => {
                         </FormLabel>
                     </Col>
                     <Col xs={9} sm={9} md={10} xxl={10} xl={10}>
-                        <FormControl as={"textarea"}
-                            className="shadow-none fz-1"
-                            value={text}
-                            onChange={onChangeText}
-                        />
+                        <Editor getContent={getContent}/>
                     </Col>
                 </Row>
+                <Button variant="prime-pallet" className="float-end mb-3">
+                    Отправить
+                </Button>
             </Container>
         </>
     );
