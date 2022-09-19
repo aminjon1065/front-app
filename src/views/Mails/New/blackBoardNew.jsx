@@ -8,7 +8,7 @@ import apiRequest from "../../../helper/customAxios";
 import UploadFiles from "../../../components/Mails/UploadFiles";
 
 
-const Index = () => {
+const BLack = () => {
     const [to, setTo] = useState(null)
     const [title, setTitle] = useState('')
     const [files, setFiles] = useState(null)
@@ -21,27 +21,23 @@ const Index = () => {
         setTitle(e.target.value)
     }
     if (error) return <h1 className="text-danger">Загрузка...</h1>
-    const storeNewMessage = (event) => {
-        event.preventDefault()
+    const storeNewMessage = () => {
         let formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            formData.append('files_link[]', files[i], files[i].name)
+        for (const key of Object.keys(files)) {
+            formData.append('files_link[]', files[key])
         }
-        formData.append('title', title);
-        formData.append('description', htmlContent);
-        for (let i = 0; i < to.length; i++) {
-            formData.append('to[]', to[i]['value'])
-        }
-        apiRequest.post('/message', formData, {
-            headers: {
-                headers: {'Content-Type': 'multipart/form-data'},
-            }
+
+        apiRequest.post('/message', {
+            "title": title,
+            "to": to,
+            "description": htmlContent,
         }).then((res) => {
             console.log(res)
         }).catch((err) => {
             console.log(err)
         })
     }
+
     return (
         <>
             <Container className="p-3">
@@ -103,7 +99,7 @@ const Index = () => {
                             <UploadFiles setFiles={setFiles}/>
                         </Col>
                     </Row>
-                    <Button variant="prime-pallet" className="float-end mb-3" type="submit">
+                    <Button variant="prime-pallet" className="float-end mb-3" >
                         Отправить
                     </Button>
                 </form>
@@ -113,4 +109,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default BLack;
