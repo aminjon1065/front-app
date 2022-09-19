@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import logo from "./../../../assets/images/logo.png";
 import {Container, FloatingLabel, Image, Form, Button} from "react-bootstrap";
 import {BiLogIn, BiLoaderCircle} from "react-icons/bi";
@@ -25,6 +25,7 @@ const Index = () => {
 
     useEffect(() => {
         loginRef.current.focus()
+        document.title = "Войти"
     }, [])
     const changeFocusLoginToPassword = (event) => {
         if (event.key === "Enter") {
@@ -114,6 +115,15 @@ const Index = () => {
                                     </>
                                 )
                         }
+                    </Button>
+                    <Button
+                        size="lg"
+                        className={`w-100 mt-3 text-apple-cyan shadow-none mh-100`}
+                        variant="outline"
+                        ref={loginBtn}
+                        as={NavLink}
+                        to="/sign-up"
+                    >Создать аккаунт
                     </Button>
                 </Container>
             </Container>

@@ -1,5 +1,4 @@
 import React from 'react';
-import {FormControl} from "react-bootstrap";
 
 const Index = ({setFiles}) => {
     const handleChangeFile = (e) => {

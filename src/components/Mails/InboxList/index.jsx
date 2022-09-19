@@ -16,7 +16,10 @@ const Index = () => {
                             {
                                 msg.files_link
                                     ?
-                                    <img src={getFileFromServer(msg.files_link[0])} width="200px"/>
+                                    <>
+                                        <img src={getFileFromServer(msg.files_link[0])} alt={msg.to} width="200px"/>
+                                        <div dangerouslySetInnerHTML={{__html: msg.description}}/>
+                                    </>
                                     :
                                     null
                             }

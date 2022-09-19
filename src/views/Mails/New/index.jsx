@@ -4,7 +4,7 @@ import Select from "react-select";
 import {useGetAllUsersQuery} from "../../../utils/getUsersList";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Editor from "../../../components/Mails/Editor";
-import apiRequest from "../../../helper/customAxios";
+import {apiRequest} from "../../../helper/customAxios";
 import UploadFiles from "../../../components/Mails/UploadFiles";
 
 
