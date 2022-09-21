@@ -1,35 +1,24 @@
 import React from 'react';
-import {useGetMessagesQuery} from "../../../utils/getMessages";
-import {getFileFromServer} from "../../../utils/getFileFromServer";
+import formatterDay from "../../../utils/formatterDate";
+import {ListGroup} from "react-bootstrap";
 
-const Index = () => {
-    const {data = [], isLoading, error} = useGetMessagesQuery();
-    if (isLoading) return <h1>Загрузка...</h1>
-    if (error) return <h1 className="text-light bg-danger">Ошибка</h1>
-    console.log(data.data)
+const Index = ({message, index}) => {
     return (
         <>
-            <ul>
-                {
-                    data.data.length ? data.data.map((msg, index) => (
-                        <li key={msg.id}>
-                            {
-                                msg.files_link
-                                    ?
-                                    <>
-                                        <img src={getFileFromServer(msg.files_link[0])} alt={msg.to} width="200px"/>
-                                        <div dangerouslySetInnerHTML={{__html: msg.description}}/>
-                                    </>
-                                    :
-                                    null
-                            }
-                        </li>
-                    )) : <h3>Пусто</h3>
-                }
-            </ul>
-
+            <ListGroup.Item
+                className={`d-flex hover-list-item mb-1 ${message.opened ? 'bg-soft-grey' : 'fw-bold'}`}
+            >
+                <span className="text-slate pe-2">{index + 1}).</span>
+                {/*<Form.Check aria-label={message.id} className="px-1"/>*/}
+                <span className={`flex-fill`}>{message.title}</span>
+                <span
+                    className="align-self-end fst-italic fz-1"
+                >
+                                {formatterDay(message.created_at)}
+                            </span>
+            </ListGroup.Item>
         </>
-    );
+    )
 };
 
 export default Index;

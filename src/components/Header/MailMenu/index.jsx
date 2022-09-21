@@ -1,12 +1,12 @@
 import React from "react";
-import {Nav, Button, Image} from "react-bootstrap";
+import {Nav, Button, Image, Badge} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import inbox from "./../../../assets/icons/inbox.svg";
 import send from "./../../../assets/icons/send.svg";
 import draft from "./../../../assets/icons/draft.svg";
 import newMessage from "./../../../assets/icons/new-message.svg";
 
-const Index = () => {
+const Index = ({count}) => {
     return (
         <>
             <Nav
@@ -34,6 +34,15 @@ const Index = () => {
                       <Image src={inbox} width={24}/>
                   </span>
                     Входящие
+                    {
+                        count
+                            ?
+                            <Badge bg="classic-blue" className="float-end">
+                                {count}
+                            </Badge>
+                            :
+                            null
+                    }
                 </Button>
                 <Button
                     variant=""

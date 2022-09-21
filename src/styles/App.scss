@@ -13,11 +13,17 @@ a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn.active {
   border: none;
 }
 
-.btn{
+div.hover-list-item:hover {
+  @extend .shadow;
+  @extend .text-prime-pallet;
+
+}
+
+.btn {
   --bs-btn-border-width: 0;
 }
 
-a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn:hover{
+a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn:hover {
   border: none;
 }
 

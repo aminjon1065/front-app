@@ -11,6 +11,7 @@ import Draft from "../views/Mails/Draft";
 const MailRoutes = () => {
     const location = useLocation();
     useEffect(() => {
+
         if (location.pathname === '/mail/inbox') {
             document.title = 'Messages'
         }
