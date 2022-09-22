@@ -34,26 +34,34 @@ const Index = () => {const [pageNum, setPageNum] = useState(1);
         return <span>Loading...</span>
     }
 
-    console.log(pageLinks)
     if (error) {
         return <span>Error!</span>
     }
 
     return (
         <>
-            <ListGroup className="p-2">
-                {
-                    data.data.map((message, index) => (
-                        <InboxList message={message} index={index} key={message.id}/>
-                    ))
-                }
-            </ListGroup>
-            <Pagination className="float-end">
-                <Pagination.First onClick={firstPage}/>
-                <Pagination.Prev onClick={prevPage}/>
-                <Pagination.Next onClick={nextPage}/>
-                <Pagination.Last onClick={lastPage}/>
-            </Pagination>
+            {
+                data.data.length > 0
+                    ?
+                    <>
+                        <ListGroup className="p-2">
+                            {
+                                data.data.map((message, index) => (
+                                    <InboxList message={message} index={index} key={message.id}/>
+                                ))
+                            }
+                        </ListGroup>
+                        <Pagination className="float-end">
+                            <Pagination.First onClick={firstPage}/>
+                            <Pagination.Prev onClick={prevPage}/>
+                            <Pagination.Next onClick={nextPage}/>
+                            <Pagination.Last onClick={lastPage}/>
+                        </Pagination>
+                    </>
+                :
+                    <h1>Empty</h1>
+
+            }
         </>
     );
 };

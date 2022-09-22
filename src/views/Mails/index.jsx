@@ -24,7 +24,6 @@ const Index = () => {
             setToast({show: true, text: selector.message, userName: selector.user.name, variant: "success"})
         }
     }, [location, selector])
-    console.log(count)
     return (
         <>
             <Header/>
