@@ -14,9 +14,11 @@ a.text-start.hover-btn.rounded-3.py-2.ps-2.my-1.shadow-none.btn.active {
 }
 
 div.hover-list-item:hover {
-  @extend .shadow;
+  //@extend .shadow;
   @extend .text-prime-pallet;
-
+  border: 1px solid #1C6EA4;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .btn {
