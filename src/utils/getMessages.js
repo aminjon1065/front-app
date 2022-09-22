@@ -13,7 +13,7 @@ export const messagesApi = createApi({
     }),
     endpoints: (build) => ({
         getMessages: build.query({
-            query: () => `inbox`,
+            query: (page) => `inbox?page=${page}`,
         })
     })
 });
