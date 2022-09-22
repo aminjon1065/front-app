@@ -1,27 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useGetMessagesQuery} from "../../../utils/getMessages";
-import {ListGroup, Form, Button, Pagination} from "react-bootstrap";
+import {ListGroup, Pagination} from "react-bootstrap";
 import InboxList from "../../../components/Mails/InboxList";
 
-const Index = () => {
-    const [isHover, setIsHover] = useState(false);
-    const [pageNum, setPageNum] = useState(1);
+const Index = () => {const [pageNum, setPageNum] = useState(1);
     const {data = [], isLoading, error} = useGetMessagesQuery(pageNum);
+    const [pageLinks, setPageLinks] = useState([]);
+    useEffect(() => {
+        setPageLinks(data.links)
+    })
     const prevPage = () => {
         if (pageNum === 1) {
-            
+            setPageNum(1)
         }
+        if (pageNum > 1) {
+            setPageNum(pageNum - 1)
+        }
+    }
+
+    const nextPage = () => {
+        if (data.next_page_url) {
+            setPageNum(pageNum + 1)
+        }
+    }
+
+    const lastPage = () => {
+        setPageNum(data.last_page)
+    }
+    const firstPage = () => {
+        setPageNum(1)
     }
     if (isLoading) {
         return <span>Loading...</span>
     }
+
+    console.log(pageLinks)
     if (error) {
         return <span>Error!</span>
     }
-    const hoverItem = () => {
-        setIsHover(prevState => !prevState)
-    }
-    console.log(isHover)
+
     return (
         <>
             <ListGroup className="p-2">
@@ -31,19 +48,11 @@ const Index = () => {
                     ))
                 }
             </ListGroup>
-            <Pagination>
-                <Pagination.First/>
-                <Pagination.Prev/>
-                <Pagination.Item>{1}</Pagination.Item>
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Item>{11}</Pagination.Item>
-                <Pagination.Item active>{12}</Pagination.Item>
-                <Pagination.Item>{13}</Pagination.Item>
-                <Pagination.Item disabled>{14}</Pagination.Item>
-                <Pagination.Ellipsis/>
-                <Pagination.Item>{20}</Pagination.Item>
-                <Pagination.Next/>
-                <Pagination.Last/>
+            <Pagination className="float-end">
+                <Pagination.First onClick={firstPage}/>
+                <Pagination.Prev onClick={prevPage}/>
+                <Pagination.Next onClick={nextPage}/>
+                <Pagination.Last onClick={lastPage}/>
             </Pagination>
         </>
     );

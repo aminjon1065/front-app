@@ -51,7 +51,7 @@ const MainRoutes = () => {
                     // </Container>
                     :
                     <>
-                        <div className={"bg-gray-bg vh-100"}>
+                        <div className={"bg-bg min-vh-100 "}>
                             <Routes>
                                 <Route path="/" element={<MainPage/>}/>
                                 <Route path="/dashboard/*" element={<Dashboard/>}/>
