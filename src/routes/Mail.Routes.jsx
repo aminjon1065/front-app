@@ -6,12 +6,12 @@ import Sent from "../views/Mails/Sent";
 import NotFound from "../views/NotFound";
 import Inbox from "../views/Mails/Inbox";
 import Draft from "../views/Mails/Draft";
+import MailItem from "../views/Mails/Inbox/MailItem";
 
 
 const MailRoutes = () => {
     const location = useLocation();
     useEffect(() => {
-
         if (location.pathname === '/mail/inbox') {
             document.title = 'Messages'
         }
@@ -21,6 +21,7 @@ const MailRoutes = () => {
             <Container fluid className="bg-white-pallet rounded shadow-sm h-100">
                 <Routes>
                     <Route path={"/inbox"} element={<Inbox/>}/>
+                    <Route path={"/inbox/:id"} element={<MailItem/>}/>
                     <Route path={"/new"} element={<New/>}/>
                     <Route path={"/sent"} element={<Sent/>}/>
                     <Route path={"/draft"} element={<Draft/>}/>
