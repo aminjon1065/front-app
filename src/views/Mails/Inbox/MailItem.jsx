@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useParams} from "react-router-dom";
 import {useGetMessageQuery} from "../../../utils/getMessage";
 
@@ -10,6 +10,11 @@ const MailItem = () => {
     if (isLoading) {
         return (
             <h1>Loading...</h1>
+        )
+    }
+    if (error) {
+        return (
+            <h1>Error!</h1>
         )
     }
     return (
