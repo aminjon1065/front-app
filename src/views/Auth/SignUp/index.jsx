@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Container, FloatingLabel, Form, Image} from "react-bootstrap";
 import logo from "../../../assets/images/logo.png";
+import {signUpService} from "../../../services/auth/signUp.service";
 
 const Index = () => {
     useEffect(() => {
         document.title = "Регистрация"
     })
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [region, setRegion] = useState("");
     const [position, setPosition] = useState("");
@@ -16,6 +18,9 @@ const Index = () => {
     const [avatar, setAvatar] = useState(null);
     const emailChange = (event) => {
         setEmail(event.target.value)
+    }
+    const passwordChange = (event) => {
+        setPassword(event.target.value)
     }
     const nameChange = (event) => {
         setName(event.target.value)
@@ -27,16 +32,32 @@ const Index = () => {
         setPosition(event.target.value)
     }
     const departmentChange = (event) => {
-        setPosition(event.target.value)
+        setDepartment(event.target.value)
     }
     const rankChange = (event) => {
         setRank(event.target.value)
     }
     const signatureChange = (event) => {
-        setSignature(event.target.files)
+        setSignature(event.target.files[0])
     }
     const avatarChange = (event) => {
-        setAvatar(event.target.files)
+        setAvatar(event.target.files[0])
+    }
+    const registerSubmit = async () => {
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("region", region);
+        formData.append("position", position);
+        formData.append("department", department);
+        formData.append("rank", rank);
+        formData.append("signature", signature);
+        formData.append("avatar", avatar);
+        await signUpService(formData).then((response) => {
+            console.log(response)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
     return (
         <>
@@ -66,6 +87,19 @@ const Index = () => {
                             placeholder="name@example.com"
                             value={email}
                             onChange={emailChange}
+                            className="sign-in-input shadow-sm"
+                        />
+                    </FloatingLabel>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Password"
+                        className="mb-3"
+                    >
+                        <Form.Control
+                            type="password"
+                            placeholder="password"
+                            value={password}
+                            onChange={passwordChange}
                             className="sign-in-input shadow-sm"
                         />
                     </FloatingLabel>
@@ -144,11 +178,14 @@ const Index = () => {
                             onChange={(e) => avatarChange(e)}
                             className="shadow-sm"
                         />
+                        <Image src={avatar}/>
+                        <p>{avatar}</p>
                     </Form.Group>
                     <Button
                         size="lg"
                         className={`w-100 mt-3 text-apple-milk shadow-none mh-100`}
                         variant="apple-cyan"
+                        onClick={registerSubmit}
                     >
                         Создать
                     </Button>
