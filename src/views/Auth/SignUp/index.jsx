@@ -9,6 +9,7 @@ const Index = () => {
     })
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [name, setName] = useState("");
     const [region, setRegion] = useState("");
     const [position, setPosition] = useState("");
@@ -21,6 +22,7 @@ const Index = () => {
     }
     const passwordChange = (event) => {
         setPassword(event.target.value)
+        setPasswordConfirmation(event.target.value)
     }
     const nameChange = (event) => {
         setName(event.target.value)
@@ -47,6 +49,7 @@ const Index = () => {
         let formData = new FormData();
         formData.append("name", name);
         formData.append("email", email);
+        formData.append("password", password);
         formData.append("region", region);
         formData.append("position", position);
         formData.append("department", department);
@@ -178,8 +181,6 @@ const Index = () => {
                             onChange={(e) => avatarChange(e)}
                             className="shadow-sm"
                         />
-                        <Image src={avatar}/>
-                        <p>{avatar}</p>
                     </Form.Group>
                     <Button
                         size="lg"
